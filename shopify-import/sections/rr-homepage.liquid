@@ -1,0 +1,443 @@
+{% liquid
+  assign hero_product = section.settings.hero_product
+  assign featured_collection = section.settings.featured_collection
+  assign new_collection = section.settings.new_collection
+  assign ring_collection = section.settings.ring_collection
+  assign necklace_collection = section.settings.necklace_collection
+%}
+
+<section class="rr-home">
+  <div class="rr-hero">
+    <div class="rr-hero__copy">
+      <p class="rr-kicker">{{ 'home.kicker' | t }}</p>
+      <h1>{{ 'home.hero_title' | t }}</h1>
+      <p>{{ 'home.hero_text' | t }}</p>
+      <div class="rr-actions">
+        <a class="rr-button" href="/collections/best-seller">{{ 'home.shop_best_sellers' | t }}</a>
+        <a class="rr-button rr-button--ghost" href="/collections/new-arrival">{{ 'home.explore_new' | t }}</a>
+      </div>
+    </div>
+    <div class="rr-hero__media rr-hero__media--slider">
+      <div class="rr-hero__slides" aria-label="Featured jewellery images">
+        <div class="rr-hero__slide rr-hero__slide--one">
+          {% if hero_product.featured_image %}
+            {{ hero_product.featured_image | image_url: width: 1300 | image_tag: loading: 'eager', sizes: '(min-width: 990px) 48vw, 94vw', widths: '600, 900, 1200, 1300', alt: hero_product.title }}
+          {% elsif featured_collection.products.first.featured_image %}
+            {{ featured_collection.products.first.featured_image | image_url: width: 1300 | image_tag: loading: 'eager', sizes: '(min-width: 990px) 48vw, 94vw', widths: '600, 900, 1200, 1300', alt: featured_collection.products.first.title }}
+          {% else %}
+            {{ 'collection-1' | placeholder_svg_tag: 'rr-hero__placeholder' }}
+          {% endif %}
+        </div>
+        <div class="rr-hero__slide rr-hero__slide--two">
+          {% if featured_collection.products[1].featured_image %}
+            {{ featured_collection.products[1].featured_image | image_url: width: 1300 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 48vw, 94vw', widths: '600, 900, 1200, 1300', alt: featured_collection.products[1].title }}
+          {% elsif new_collection.products.first.featured_image %}
+            {{ new_collection.products.first.featured_image | image_url: width: 1300 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 48vw, 94vw', widths: '600, 900, 1200, 1300', alt: new_collection.products.first.title }}
+          {% elsif ring_collection.products.first.featured_image %}
+            {{ ring_collection.products.first.featured_image | image_url: width: 1300 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 48vw, 94vw', widths: '600, 900, 1200, 1300', alt: ring_collection.products.first.title }}
+          {% else %}
+            {{ 'collection-2' | placeholder_svg_tag: 'rr-hero__placeholder' }}
+          {% endif %}
+        </div>
+        <div class="rr-hero__slide rr-hero__slide--three">
+          {% if new_collection.products[1].featured_image %}
+            {{ new_collection.products[1].featured_image | image_url: width: 1300 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 48vw, 94vw', widths: '600, 900, 1200, 1300', alt: new_collection.products[1].title }}
+          {% elsif necklace_collection.products.first.featured_image %}
+            {{ necklace_collection.products.first.featured_image | image_url: width: 1300 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 48vw, 94vw', widths: '600, 900, 1200, 1300', alt: necklace_collection.products.first.title }}
+          {% elsif featured_collection.products.first.featured_image %}
+            {{ featured_collection.products.first.featured_image | image_url: width: 1300 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 48vw, 94vw', widths: '600, 900, 1200, 1300', alt: featured_collection.products.first.title }}
+          {% else %}
+            {{ 'collection-3' | placeholder_svg_tag: 'rr-hero__placeholder' }}
+          {% endif %}
+        </div>
+      </div>
+      <div class="rr-hero__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="rr-hero__badge">
+        <span>{{ 'home.badge_number' | t }}</span>
+        <small>{{ 'home.badge_text' | t }}</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="rr-trust" aria-label="{{ 'home.trust_label' | t }}">
+    <span>{{ 'home.trust_gold' | t }}</span>
+    <span>{{ 'home.trust_gemstones' | t }}</span>
+    <span>{{ 'home.trust_finish' | t }}</span>
+    <span>{{ 'home.trust_consultation' | t }}</span>
+  </div>
+
+  <section class="rr-section">
+    <div class="rr-section__heading">
+      <p class="rr-kicker">{{ 'home.collections_kicker' | t }}</p>
+      <h2>{{ 'home.collections_title' | t }}</h2>
+    </div>
+    <div class="rr-collections">
+      {% if ring_collection != blank %}
+        <a class="rr-collection-tile" href="{{ ring_collection.url }}">
+          {% if ring_collection.image %}
+            {{ ring_collection.image | image_url: width: 700 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 33vw, 90vw', widths: '360, 540, 700', alt: ring_collection.title }}
+          {% elsif ring_collection.products.first.featured_image %}
+            {{ ring_collection.products.first.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 33vw, 90vw', widths: '360, 540, 700', alt: ring_collection.title }}
+          {% endif %}
+          <span>{{ ring_collection.title }}</span>
+        </a>
+      {% endif %}
+      {% if necklace_collection != blank %}
+        <a class="rr-collection-tile rr-collection-tile--tall" href="{{ necklace_collection.url }}">
+          {% if necklace_collection.image %}
+            {{ necklace_collection.image | image_url: width: 700 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 33vw, 90vw', widths: '360, 540, 700', alt: necklace_collection.title }}
+          {% elsif necklace_collection.products.first.featured_image %}
+            {{ necklace_collection.products.first.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 33vw, 90vw', widths: '360, 540, 700', alt: necklace_collection.title }}
+          {% endif %}
+          <span>{{ necklace_collection.title }}</span>
+        </a>
+      {% endif %}
+      {% if new_collection != blank %}
+        <a class="rr-collection-tile" href="{{ new_collection.url }}">
+          {% if new_collection.image %}
+            {{ new_collection.image | image_url: width: 700 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 33vw, 90vw', widths: '360, 540, 700', alt: new_collection.title }}
+          {% elsif new_collection.products.first.featured_image %}
+            {{ new_collection.products.first.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 33vw, 90vw', widths: '360, 540, 700', alt: new_collection.title }}
+          {% endif %}
+          <span>{{ new_collection.title }}</span>
+        </a>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="rr-section rr-section--cream">
+    <div class="rr-section__heading rr-section__heading--split">
+      <div>
+        <p class="rr-kicker">{{ 'home.featured_kicker' | t }}</p>
+        <h2>{{ 'home.featured_title' | t }}</h2>
+      </div>
+      <a class="rr-link" href="{{ featured_collection.url }}">{{ 'home.view_all' | t }}</a>
+    </div>
+    <div class="rr-product-grid">
+      {% if featured_collection.products_count > 0 %}
+        {% for product in featured_collection.products limit: 8 %}
+          {% render 'rr-product-card', product: product, show_vendor: false %}
+        {% endfor %}
+      {% else %}
+        {% for product in collections.all.products limit: 8 %}
+          {% render 'rr-product-card', product: product, show_vendor: false %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="rr-story">
+    <div>
+      <p class="rr-kicker">{{ 'home.story_kicker' | t }}</p>
+      <h2>{{ 'home.story_title' | t }}</h2>
+      <p>{{ 'home.story_text' | t }}</p>
+      <p class="rr-story__brand-note">Ritika Rajawat Fine Jewellery Atelier creates modern heirlooms rooted in regal Indian detail, thoughtful craftsmanship, and personal celebration. Each piece is imagined to feel graceful, distinctive, and worthy of being passed on.</p>
+    </div>
+    <div class="rr-story__panel">
+      <details open>
+        <summary>{{ 'home.detail_one_title' | t }}</summary>
+        <p>{{ 'home.detail_one_text' | t }}</p>
+      </details>
+      <details>
+        <summary>{{ 'home.detail_two_title' | t }}</summary>
+        <p>{{ 'home.detail_two_text' | t }}</p>
+      </details>
+      <details>
+        <summary>{{ 'home.detail_three_title' | t }}</summary>
+        <p>{{ 'home.detail_three_text' | t }}</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="rr-newsletter">
+    <div>
+      <p class="rr-kicker">{{ 'home.newsletter_kicker' | t }}</p>
+      <h2>{{ 'home.newsletter_title' | t }}</h2>
+    </div>
+    {% form 'customer', class: 'rr-newsletter__form' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <label class="rr-visually-hidden" for="NewsletterEmail">{{ 'home.email_label' | t }}</label>
+      <input id="NewsletterEmail" type="email" name="contact[email]" autocomplete="email" placeholder="{{ 'home.email_placeholder' | t }}" required>
+      <button type="submit">{{ 'home.subscribe' | t }}</button>
+      {% if form.posted_successfully? %}
+        <p class="rr-form-message">{{ 'home.newsletter_success' | t }}</p>
+      {% endif %}
+      {{ form.errors | default_errors }}
+    {% endform %}
+  </section>
+</section>
+
+{% stylesheet %}
+  .rr-home { overflow: hidden; }
+  .rr-hero, .rr-section, .rr-story, .rr-newsletter, .rr-trust {
+    width: var(--rr-page);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .rr-hero {
+    display: grid;
+    grid-template-columns: 0.86fr 1.14fr;
+    gap: clamp(24px, 5vw, 70px);
+    align-items: center;
+    padding: clamp(42px, 8vw, 110px) 0 44px;
+  }
+  .rr-kicker {
+    margin: 0 0 12px;
+    color: var(--rr-gold);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+  .rr-hero h1, .rr-section h2, .rr-story h2, .rr-newsletter h2 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 500;
+    line-height: 0.95;
+  }
+  .rr-hero h1, .rr-section__heading h2 {
+    font-size: clamp(2.808rem, 5.85vw, 6.084rem);
+    letter-spacing: 0;
+  }
+  .rr-hero p:not(.rr-kicker), .rr-story p { color: var(--rr-muted); font-size: clamp(1rem, 1.6vw, 1.18rem); }
+  .rr-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .rr-button, .rr-newsletter button {
+    border: 0;
+    border-radius: 999px;
+    background: var(--rr-ink);
+    color: var(--rr-paper);
+    padding: 14px 22px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .rr-button--ghost { background: transparent; color: var(--rr-ink); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18); }
+  .rr-hero__media {
+    position: relative;
+    min-height: 560px;
+    border-radius: var(--rr-radius);
+    overflow: hidden;
+    box-shadow: var(--rr-shadow);
+    background: linear-gradient(135deg, var(--rr-soft), var(--rr-paper));
+  }
+  .rr-hero__slides,
+  .rr-hero__slide {
+    position: absolute;
+    inset: 0;
+  }
+  .rr-hero__slide {
+    opacity: 0;
+    animation: rr-hero-fade 15s infinite;
+  }
+  .rr-hero__slide--two { animation-delay: 5s; }
+  .rr-hero__slide--three { animation-delay: 10s; }
+  .rr-hero__media img, .rr-hero__placeholder { width: 100%; height: 100%; min-height: 560px; object-fit: cover; }
+  .rr-hero__dots {
+    position: absolute;
+    left: 24px;
+    bottom: 28px;
+    z-index: 2;
+    display: flex;
+    gap: 8px;
+  }
+  .rr-hero__dots span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: 1px solid var(--rr-paper);
+    background: color-mix(in srgb, var(--rr-ruby) 68%, transparent);
+  }
+  .rr-hero__badge {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    z-index: 2;
+    width: 148px;
+    height: 148px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    background: color-mix(in srgb, var(--rr-paper) 88%, transparent);
+    backdrop-filter: blur(12px);
+  }
+  .rr-hero__badge span { font-family: Georgia, "Times New Roman", serif; font-size: 2.4rem; }
+  .rr-hero__badge small { display: block; max-width: 96px; color: var(--rr-muted); }
+  .rr-trust {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    margin-bottom: 76px;
+    border-radius: 22px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.08);
+  }
+  .rr-trust span { background: #fffdf8; padding: 18px; text-align: center; color: var(--rr-muted); }
+  .rr-section { padding: 72px 0; }
+  .rr-section--cream {
+    width: 100%;
+    padding-left: max(16px, calc((100vw - 1180px) / 2));
+    padding-right: max(16px, calc((100vw - 1180px) / 2));
+    background: var(--rr-soft);
+  }
+  .rr-section__heading { max-width: 680px; margin-bottom: 30px; }
+  .rr-story h2, .rr-newsletter h2 { font-size: clamp(2.4rem, 5vw, 5.2rem); }
+  .rr-section__heading--split { max-width: none; display: flex; align-items: end; justify-content: space-between; gap: 20px; }
+  .rr-link { color: var(--rr-ruby); font-weight: 700; }
+  .rr-collections {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 430px;
+    gap: 18px;
+    align-items: stretch;
+  }
+  .rr-collection-tile {
+    position: relative;
+    display: block;
+    height: 100%;
+    min-height: 0;
+    border-radius: var(--rr-radius);
+    overflow: hidden;
+    background: #e7d8c1;
+    box-shadow: var(--rr-shadow);
+  }
+  .rr-collection-tile--tall { transform: none; }
+  .rr-collection-tile img { width: 100%; height: 100%; object-fit: cover; transition: scale 500ms ease; }
+  .rr-collection-tile:hover img { scale: 1.04; }
+  .rr-collection-tile span {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--rr-paper) 90%, transparent);
+    padding: 14px 18px;
+    font-weight: 800;
+    text-align: center;
+  }
+  .rr-product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  .rr-card {
+    background: #fffdf8;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  }
+  .rr-card__media { display: block; aspect-ratio: 1 / 1.12; background: #eadcc8; overflow: hidden; }
+  .rr-card__media img, .rr-card__placeholder { width: 100%; height: 100%; object-fit: cover; transition: scale 420ms ease; }
+  .rr-card:hover .rr-card__media img { scale: 1.05; }
+  .rr-card__body { padding: 16px; }
+  .rr-card__body h3 { margin: 0 0 8px; font-size: 1rem; line-height: 1.25; }
+  .rr-card__price, .rr-card__vendor { margin: 0; color: var(--rr-muted); }
+  .rr-story {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 48px;
+    padding: 88px 0;
+    align-items: start;
+  }
+  .rr-story__brand-note {
+    margin-top: 18px;
+    padding-left: 18px;
+    border-left: 3px solid var(--rr-gold);
+  }
+  .rr-story__panel {
+    display: grid;
+    gap: 12px;
+  }
+  .rr-story details {
+    background: #fffdf8;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 18px;
+    padding: 18px 20px;
+  }
+  .rr-story summary { cursor: pointer; font-weight: 800; }
+  .rr-newsletter {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 28px;
+    align-items: center;
+    border-radius: var(--rr-radius);
+    padding: clamp(28px, 5vw, 54px);
+    background: var(--rr-ruby);
+    color: var(--rr-paper);
+  }
+  .rr-newsletter .rr-kicker { color: #e4dfb5; }
+  .rr-newsletter__form { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+  .rr-newsletter input {
+    width: 100%;
+    border: 0;
+    border-radius: 999px;
+    padding: 16px 18px;
+    background: rgba(255, 250, 242, 0.94);
+    color: var(--rr-ink);
+  }
+  .rr-form-message { grid-column: 1 / -1; margin: 4px 0 0; }
+  .rr-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  @keyframes rr-hero-fade {
+    0%, 30% { opacity: 1; }
+    36%, 94% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @media (max-width: 900px) {
+    .rr-hero, .rr-story, .rr-newsletter { grid-template-columns: 1fr; }
+    .rr-hero__media, .rr-hero__media img, .rr-hero__placeholder { min-height: 420px; }
+    .rr-trust { grid-template-columns: repeat(2, 1fr); }
+    .rr-collections, .rr-product-grid { grid-template-columns: repeat(2, 1fr); }
+    .rr-collections { grid-auto-rows: minmax(340px, auto); }
+    .rr-collection-tile--tall { transform: none; }
+  }
+  @media (max-width: 560px) {
+    .rr-collections, .rr-product-grid, .rr-trust, .rr-newsletter__form { grid-template-columns: 1fr; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections_home.name",
+  "settings": [
+    {
+      "type": "product",
+      "id": "hero_product",
+      "label": "t:sections_home.hero_product"
+    },
+    {
+      "type": "collection",
+      "id": "featured_collection",
+      "label": "t:sections_home.featured_collection"
+    },
+    {
+      "type": "collection",
+      "id": "new_collection",
+      "label": "t:sections_home.new_collection"
+    },
+    {
+      "type": "collection",
+      "id": "ring_collection",
+      "label": "t:sections_home.ring_collection"
+    },
+    {
+      "type": "collection",
+      "id": "necklace_collection",
+      "label": "t:sections_home.necklace_collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections_home.name"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,135 @@
+{
+  "accessibility": {
+    "skip_to_content": "Skip to content"
+  },
+  "general": {
+    "primary_navigation": "Primary navigation",
+    "utility_navigation": "Utility navigation"
+  },
+  "navigation": {
+    "best_sellers": "Best sellers",
+    "new_arrivals": "New arrivals",
+    "rings": "Rings",
+    "necklaces": "Necklaces",
+    "contact": "Contact",
+    "search": "Search",
+    "cart": "Cart ({{ count }})",
+    "cart_plain": "Cart"
+  },
+  "footer": {
+    "summary": "Fine jewelry shaped for modern heirlooms, thoughtful gifting, and everyday radiance.",
+    "shop": "Shop",
+    "support": "Support",
+    "promise": "Promise",
+    "promise_text": "Elegant craftsmanship, considered gemstones, and warm client care from selection to delivery."
+  },
+  "home": {
+    "kicker": "Fine jewelry atelier",
+    "hero_title": "Modern heirlooms with a jewel-box soul",
+    "hero_text": "Discover sculptural rings, luminous necklaces, bracelets, and gemstone pieces designed for days that deserve a little ceremony.",
+    "shop_best_sellers": "Shop best sellers",
+    "explore_new": "Explore new arrivals",
+    "badge_number": "14K",
+    "badge_text": "Gold-led fine jewelry",
+    "trust_label": "Store promises",
+    "trust_gold": "14K gold focus",
+    "trust_gemstones": "Gemstone-led designs",
+    "trust_finish": "Polished atelier finish",
+    "trust_consultation": "Personal styling support",
+    "collections_kicker": "Curated edits",
+    "collections_title": "Designed around the pieces clients reach for first",
+    "featured_kicker": "Signature selection",
+    "featured_title": "Best-selling brilliance",
+    "view_all": "View all pieces",
+    "story_kicker": "Atelier notes",
+    "story_title": "Fine jewelry, softened for everyday wear",
+    "story_text": "The experience is built to feel considered from the first browse: warm tones, clear product paths, graceful photography, and product cards that let each stone breathe.",
+    "detail_one_title": "Gem-forward curation",
+    "detail_one_text": "Ruby, emerald, sapphire, opal, tanzanite, and diamond styles are surfaced through focused collections.",
+    "detail_two_title": "Conversion-ready commerce",
+    "detail_two_text": "Product, collection, search, cart, contact, and newsletter flows are included for a stable storefront draft.",
+    "detail_three_title": "Mobile-first polish",
+    "detail_three_text": "Layouts collapse cleanly, imagery stays prominent, and controls remain easy to tap.",
+    "newsletter_kicker": "Private viewings",
+    "newsletter_title": "Receive new drops and styling notes",
+    "email_label": "Email address",
+    "email_placeholder": "Email address",
+    "subscribe": "Subscribe",
+    "newsletter_success": "Thank you for subscribing."
+  },
+  "product": {
+    "variant_label": "Choose an option",
+    "quantity": "Quantity",
+    "add_to_cart": "Add to cart",
+    "sold_out": "Sold out",
+    "promise_gold": "Crafted with precious metal",
+    "promise_shipping": "Secure checkout and delivery",
+    "promise_support": "Styling support available"
+  },
+  "collection": {
+    "kicker": "Collection",
+    "empty": "No products are available in this collection yet.",
+    "pagination": "Collection pagination"
+  },
+  "page": {
+    "kicker": "Information"
+  },
+  "contact": {
+    "kicker": "Atelier support",
+    "title": "Let’s find your piece",
+    "text": "Ask about styling, gifting, sizing, gemstone details, or a piece you saw in the collection.",
+    "success": "Thank you. We will respond soon.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send message"
+  },
+  "cart": {
+    "kicker": "Your selection",
+    "title": "Shopping cart",
+    "quantity": "Quantity",
+    "subtotal": "Subtotal",
+    "update": "Update cart",
+    "checkout": "Checkout",
+    "empty": "Your cart is currently empty.",
+    "continue_shopping": "Continue shopping"
+  },
+  "search": {
+    "kicker": "Find a piece",
+    "title": "Search",
+    "label": "Search terms",
+    "placeholder": "Search rings, necklaces, gemstones",
+    "submit": "Search",
+    "empty": "No matching products were found."
+  },
+  "sections_home": {
+    "name": "Atelier homepage",
+    "hero_product": "Hero product",
+    "featured_collection": "Featured collection",
+    "new_collection": "New arrivals collection",
+    "ring_collection": "Ring collection",
+    "necklace_collection": "Necklace collection"
+  },
+  "sections_product": {
+    "name": "Main product"
+  },
+  "sections_collection": {
+    "name": "Main collection"
+  },
+  "sections_page": {
+    "name": "Main page"
+  },
+  "sections_contact": {
+    "name": "Contact form"
+  },
+  "sections_cart": {
+    "name": "Main cart"
+  },
+  "sections_search": {
+    "name": "Main search"
+  },
+  "settings_theme": {
+    "name": "Atelier theme",
+    "accent_color": "Accent color"
+  }
+}

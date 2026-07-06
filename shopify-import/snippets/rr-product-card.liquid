@@ -1,0 +1,24 @@
+{% doc %}
+Renders a refined product card.
+@param {product} product - The product to render
+@param {boolean} [show_vendor] - Show vendor text
+@example
+{% render 'rr-product-card', product: product, show_vendor: true %}
+{% enddoc %}
+
+<article class="rr-card">
+  <a class="rr-card__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+    {% if product.featured_image %}
+      {{ product.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 25vw, 80vw', widths: '360, 540, 720, 900', alt: product.title }}
+    {% else %}
+      {{ 'product-1' | placeholder_svg_tag: 'rr-card__placeholder' }}
+    {% endif %}
+  </a>
+  <div class="rr-card__body">
+    {% if show_vendor %}
+      <p class="rr-card__vendor">{{ product.vendor }}</p>
+    {% endif %}
+    <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
+    <p class="rr-card__price">{{ product.price | money }}</p>
+  </div>
+</article>

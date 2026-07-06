@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "rr-contact",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,13 @@
+[
+  {
+    "name": "t:settings_theme.name",
+    "settings": [
+      {
+        "type": "color",
+        "id": "accent_color",
+        "label": "t:settings_theme.accent_color",
+        "default": "#b68a47"
+      }
+    ]
+  }
+]

@@ -1,0 +1,71 @@
+<section class="rr-contact">
+  <div>
+    <p class="rr-kicker">{{ 'contact.kicker' | t }}</p>
+    <h1>{{ 'contact.title' | t }}</h1>
+    <p>{{ 'contact.text' | t }}</p>
+  </div>
+  {% form 'contact', class: 'rr-contact__form' %}
+    {{ form.errors | default_errors }}
+    {% if form.posted_successfully? %}
+      <p class="rr-contact__success">{{ 'contact.success' | t }}</p>
+    {% endif %}
+    <label for="ContactName">{{ 'contact.name' | t }}</label>
+    <input id="ContactName" type="text" name="contact[name]" autocomplete="name" required>
+    <label for="ContactEmail">{{ 'contact.email' | t }}</label>
+    <input id="ContactEmail" type="email" name="contact[email]" autocomplete="email" required>
+    <label for="ContactMessage">{{ 'contact.message' | t }}</label>
+    <textarea id="ContactMessage" name="contact[body]" rows="6" required></textarea>
+    <button type="submit">{{ 'contact.send' | t }}</button>
+  {% endform %}
+</section>
+
+{% stylesheet %}
+  .rr-contact {
+    width: var(--rr-page);
+    margin: 0 auto;
+    padding: clamp(40px, 8vw, 92px) 0;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(24px, 5vw, 64px);
+  }
+  .rr-contact h1 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    line-height: 0.96;
+    letter-spacing: -0.06em;
+  }
+  .rr-contact p { color: var(--rr-muted); }
+  .rr-contact__form {
+    display: grid;
+    gap: 12px;
+    background: #fffdf8;
+    border-radius: var(--rr-radius);
+    padding: clamp(22px, 4vw, 40px);
+    box-shadow: var(--rr-shadow);
+  }
+  .rr-contact__form input, .rr-contact__form textarea {
+    border: 1px solid rgba(24, 18, 15, 0.14);
+    border-radius: 16px;
+    padding: 13px 14px;
+    background: var(--rr-paper);
+  }
+  .rr-contact__form button {
+    border: 0;
+    border-radius: 999px;
+    padding: 15px 22px;
+    background: var(--rr-ink);
+    color: var(--rr-paper);
+    font-weight: 800;
+    cursor: pointer;
+  }
+  .rr-contact__success { color: var(--rr-ruby); font-weight: 800; }
+  @media (max-width: 800px) { .rr-contact { grid-template-columns: 1fr; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections_contact.name",
+  "settings": []
+}
+{% endschema %}

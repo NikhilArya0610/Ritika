@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "main": {
+      "type": "rr-homepage",
+      "settings": {
+        "hero_product": "emerald-natural-diamond-statement-ring-in-gold-luxury-fine-jewelry",
+        "featured_collection": "best-seller",
+        "new_collection": "new-arrival",
+        "ring_collection": "rings",
+        "necklace_collection": "necklace"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

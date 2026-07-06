@@ -1,0 +1,33 @@
+<section class="rr-page">
+  <header>
+    <p class="rr-kicker">{{ 'page.kicker' | t }}</p>
+    <h1>{{ page.title }}</h1>
+  </header>
+  <div class="rr-page__content">
+    {{ page.content }}
+  </div>
+</section>
+
+{% stylesheet %}
+  .rr-page {
+    width: min(880px, calc(100vw - 32px));
+    margin: 0 auto;
+    padding: clamp(40px, 8vw, 92px) 0;
+  }
+  .rr-page h1 {
+    margin: 0 0 24px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    line-height: 0.96;
+    letter-spacing: -0.05em;
+  }
+  .rr-page__content { color: var(--rr-muted); font-size: 1.08rem; }
+  .rr-page__content a { color: var(--rr-ruby); text-decoration: underline; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections_page.name",
+  "settings": []
+}
+{% endschema %}

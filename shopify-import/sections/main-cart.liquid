@@ -1,0 +1,90 @@
+<section class="rr-cart-page">
+  <header>
+    <p class="rr-kicker">{{ 'cart.kicker' | t }}</p>
+    <h1>{{ 'cart.title' | t }}</h1>
+  </header>
+  {% if cart.item_count > 0 %}
+    <form action="{{ routes.cart_url }}" method="post" class="rr-cart-page__form">
+      <div class="rr-cart-page__items">
+        {% for item in cart.items %}
+          <article class="rr-cart-item">
+            {% if item.image %}
+              {{ item.image | image_url: width: 220 | image_tag: loading: 'lazy', widths: '120, 180, 220', alt: item.product.title }}
+            {% endif %}
+            <div>
+              <h2><a href="{{ item.url }}">{{ item.product.title }}</a></h2>
+              <p>{{ item.final_price | money }}</p>
+              <label for="Quantity-{{ forloop.index }}">{{ 'cart.quantity' | t }}</label>
+              <input id="Quantity-{{ forloop.index }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0">
+            </div>
+            <strong>{{ item.final_line_price | money }}</strong>
+          </article>
+        {% endfor %}
+      </div>
+      <aside class="rr-cart-page__summary">
+        <p>{{ 'cart.subtotal' | t }}</p>
+        <strong>{{ cart.total_price | money }}</strong>
+        <button type="submit" name="update">{{ 'cart.update' | t }}</button>
+        <button type="submit" name="checkout">{{ 'cart.checkout' | t }}</button>
+      </aside>
+    </form>
+  {% else %}
+    <div class="rr-cart-empty">
+      <p>{{ 'cart.empty' | t }}</p>
+      <a class="rr-button" href="/collections/best-seller">{{ 'cart.continue_shopping' | t }}</a>
+    </div>
+  {% endif %}
+</section>
+
+{% stylesheet %}
+  .rr-cart-page { width: var(--rr-page); margin: 0 auto; padding: clamp(40px, 8vw, 92px) 0; }
+  .rr-cart-page h1 {
+    margin: 0 0 28px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    line-height: 0.96;
+    letter-spacing: -0.06em;
+  }
+  .rr-cart-page__form { display: grid; grid-template-columns: 1fr 340px; gap: 24px; align-items: start; }
+  .rr-cart-page__items { display: grid; gap: 14px; }
+  .rr-cart-item {
+    display: grid;
+    grid-template-columns: 130px 1fr auto;
+    gap: 18px;
+    align-items: center;
+    background: #fffdf8;
+    border-radius: 22px;
+    padding: 14px;
+  }
+  .rr-cart-item img { aspect-ratio: 1; object-fit: cover; border-radius: 16px; }
+  .rr-cart-item h2 { margin: 0 0 8px; font-size: 1.05rem; }
+  .rr-cart-item input { width: 92px; border: 1px solid rgba(24, 18, 15, 0.14); border-radius: 14px; padding: 10px; }
+  .rr-cart-page__summary, .rr-cart-empty {
+    background: var(--rr-soft);
+    border-radius: var(--rr-radius);
+    padding: 24px;
+  }
+  .rr-cart-page__summary strong { display: block; font-size: 1.8rem; margin-bottom: 18px; }
+  .rr-cart-page__summary button, .rr-button {
+    width: 100%;
+    border: 0;
+    border-radius: 999px;
+    margin-top: 10px;
+    padding: 14px 18px;
+    background: var(--rr-ink);
+    color: var(--rr-paper);
+    font-weight: 800;
+    text-align: center;
+    cursor: pointer;
+  }
+  @media (max-width: 860px) {
+    .rr-cart-page__form, .rr-cart-item { grid-template-columns: 1fr; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections_cart.name",
+  "settings": []
+}
+{% endschema %}
