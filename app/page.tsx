@@ -1,10 +1,10 @@
-import { HomePage } from '@/components/home/home-page';
-import { PageShell } from '@/components/layout/page-shell';
+﻿import { PageShell } from '@/components/layout/page-shell';
+import ConvertedHome from '@/components/shopify/ConvertedHome';
 
 export default function Home() {
   return (
     <PageShell>
-      <HomePage />
+      <ConvertedHome />
     </PageShell>
   );
 }
